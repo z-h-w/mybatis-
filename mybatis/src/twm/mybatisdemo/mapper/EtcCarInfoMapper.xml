@@ -1,0 +1,875 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="twm.mybatisdemo.mapper.EtcCarInfoMapper" >
+  <resultMap id="BaseResultMap" type="twm.mybatisdemo.pojo.EtcCarInfo" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="car_num" property="carNum" jdbcType="VARCHAR" />
+    <result column="customer_id" property="customerId" jdbcType="BIGINT" />
+    <result column="apply_num" property="applyNum" jdbcType="VARCHAR" />
+    <result column="credit_status" property="creditStatus" jdbcType="INTEGER" />
+    <result column="channel_source" property="channelSource" jdbcType="VARCHAR" />
+    <result column="customer_name" property="customerName" jdbcType="VARCHAR" />
+    <result column="customer_phone" property="customerPhone" jdbcType="VARCHAR" />
+    <result column="customer_num" property="customerNum" jdbcType="VARCHAR" />
+    <result column="product_id" property="productId" jdbcType="BIGINT" />
+    <result column="product_no" property="productNo" jdbcType="VARCHAR" />
+    <result column="vehicle_no" property="vehicleNo" jdbcType="VARCHAR" />
+    <result column="vehicle_color" property="vehicleColor" jdbcType="VARCHAR" />
+    <result column="vehicle_native" property="vehicleNative" jdbcType="VARCHAR" />
+    <result column="tonnage" property="tonnage" jdbcType="BIGINT" />
+    <result column="seat" property="seat" jdbcType="VARCHAR" />
+    <result column="vehicle_type" property="vehicleType" jdbcType="VARCHAR" />
+    <result column="engine_no" property="engineNo" jdbcType="VARCHAR" />
+    <result column="vin" property="vin" jdbcType="VARCHAR" />
+    <result column="description" property="description" jdbcType="VARCHAR" />
+    <result column="vehicle_type_kind" property="vehicleTypeKind" jdbcType="BIGINT" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="vehicle_owner" property="vehicleOwner" jdbcType="VARCHAR" />
+    <result column="driving_pic" property="drivingPic" jdbcType="VARCHAR" />
+    <result column="driving_down_pic" property="drivingDownPic" jdbcType="VARCHAR" />
+    <result column="use_quality" property="useQuality" jdbcType="VARCHAR" />
+    <result column="brand_model" property="brandModel" jdbcType="VARCHAR" />
+    <result column="register_time" property="registerTime" jdbcType="TIMESTAMP" />
+    <result column="certificate_time" property="certificateTime" jdbcType="TIMESTAMP" />
+    <result column="headstock_color" property="headstockColor" jdbcType="INTEGER" />
+    <result column="issued_by" property="issuedBy" jdbcType="VARCHAR" />
+    <result column="address" property="address" jdbcType="VARCHAR" />
+    <result column="etc_apply_status" property="etcApplyStatus" jdbcType="INTEGER" />
+    <result column="remarks" property="remarks" jdbcType="VARCHAR" />
+    <result column="approval_result" property="approvalResult" jdbcType="INTEGER" />
+    <result column="is_delete" property="isDelete" jdbcType="INTEGER" />
+    <result column="delete_time" property="deleteTime" jdbcType="TIMESTAMP" />
+    <result column="tenant_id" property="tenantId" jdbcType="BIGINT" />
+    <result column="biz_id" property="bizId" jdbcType="VARCHAR" />
+    <result column="open_remark" property="openRemark" jdbcType="VARCHAR" />
+    <result column="car_type" property="carType" jdbcType="VARCHAR" />
+    <result column="modify" property="modify" jdbcType="VARCHAR" />
+    <result column="etc_card_no" property="etcCardNo" jdbcType="VARCHAR" />
+    <result column="operate_type" property="operateType" jdbcType="TINYINT" />
+    <result column="etc_type" property="etcType" jdbcType="TINYINT" />
+    <result column="head_pic" property="headPic" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    id, car_num, customer_id, apply_num, credit_status, channel_source, customer_name, 
+    customer_phone, customer_num, product_id, product_no, vehicle_no, vehicle_color, 
+    vehicle_native, tonnage, seat, vehicle_type, engine_no, vin, description, vehicle_type_kind, 
+    create_time, update_time, vehicle_owner, driving_pic, driving_down_pic, use_quality, 
+    brand_model, register_time, certificate_time, headstock_color, issued_by, address, 
+    etc_apply_status, remarks, approval_result, is_delete, delete_time, tenant_id, biz_id, 
+    open_remark, car_type, modify, etc_card_no, operate_type, etc_type, head_pic
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="twm.mybatisdemo.pojo.EtcCarInfoExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from etc_car_info
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from etc_car_info
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from etc_car_info
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="twm.mybatisdemo.pojo.EtcCarInfoExample" >
+    delete from etc_car_info
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="twm.mybatisdemo.pojo.EtcCarInfo" >
+    insert into etc_car_info (id, car_num, customer_id, 
+      apply_num, credit_status, channel_source, 
+      customer_name, customer_phone, customer_num, 
+      product_id, product_no, vehicle_no, 
+      vehicle_color, vehicle_native, tonnage, 
+      seat, vehicle_type, engine_no, 
+      vin, description, vehicle_type_kind, 
+      create_time, update_time, vehicle_owner, 
+      driving_pic, driving_down_pic, use_quality, 
+      brand_model, register_time, certificate_time, 
+      headstock_color, issued_by, address, 
+      etc_apply_status, remarks, approval_result, 
+      is_delete, delete_time, tenant_id, 
+      biz_id, open_remark, car_type, 
+      modify, etc_card_no, operate_type, 
+      etc_type, head_pic)
+    values (#{id,jdbcType=BIGINT}, #{carNum,jdbcType=VARCHAR}, #{customerId,jdbcType=BIGINT}, 
+      #{applyNum,jdbcType=VARCHAR}, #{creditStatus,jdbcType=INTEGER}, #{channelSource,jdbcType=VARCHAR}, 
+      #{customerName,jdbcType=VARCHAR}, #{customerPhone,jdbcType=VARCHAR}, #{customerNum,jdbcType=VARCHAR}, 
+      #{productId,jdbcType=BIGINT}, #{productNo,jdbcType=VARCHAR}, #{vehicleNo,jdbcType=VARCHAR}, 
+      #{vehicleColor,jdbcType=VARCHAR}, #{vehicleNative,jdbcType=VARCHAR}, #{tonnage,jdbcType=BIGINT}, 
+      #{seat,jdbcType=VARCHAR}, #{vehicleType,jdbcType=VARCHAR}, #{engineNo,jdbcType=VARCHAR}, 
+      #{vin,jdbcType=VARCHAR}, #{description,jdbcType=VARCHAR}, #{vehicleTypeKind,jdbcType=BIGINT}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, #{vehicleOwner,jdbcType=VARCHAR}, 
+      #{drivingPic,jdbcType=VARCHAR}, #{drivingDownPic,jdbcType=VARCHAR}, #{useQuality,jdbcType=VARCHAR}, 
+      #{brandModel,jdbcType=VARCHAR}, #{registerTime,jdbcType=TIMESTAMP}, #{certificateTime,jdbcType=TIMESTAMP}, 
+      #{headstockColor,jdbcType=INTEGER}, #{issuedBy,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, 
+      #{etcApplyStatus,jdbcType=INTEGER}, #{remarks,jdbcType=VARCHAR}, #{approvalResult,jdbcType=INTEGER}, 
+      #{isDelete,jdbcType=INTEGER}, #{deleteTime,jdbcType=TIMESTAMP}, #{tenantId,jdbcType=BIGINT}, 
+      #{bizId,jdbcType=VARCHAR}, #{openRemark,jdbcType=VARCHAR}, #{carType,jdbcType=VARCHAR}, 
+      #{modify,jdbcType=VARCHAR}, #{etcCardNo,jdbcType=VARCHAR}, #{operateType,jdbcType=TINYINT}, 
+      #{etcType,jdbcType=TINYINT}, #{headPic,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="twm.mybatisdemo.pojo.EtcCarInfo" >
+    insert into etc_car_info
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="carNum != null" >
+        car_num,
+      </if>
+      <if test="customerId != null" >
+        customer_id,
+      </if>
+      <if test="applyNum != null" >
+        apply_num,
+      </if>
+      <if test="creditStatus != null" >
+        credit_status,
+      </if>
+      <if test="channelSource != null" >
+        channel_source,
+      </if>
+      <if test="customerName != null" >
+        customer_name,
+      </if>
+      <if test="customerPhone != null" >
+        customer_phone,
+      </if>
+      <if test="customerNum != null" >
+        customer_num,
+      </if>
+      <if test="productId != null" >
+        product_id,
+      </if>
+      <if test="productNo != null" >
+        product_no,
+      </if>
+      <if test="vehicleNo != null" >
+        vehicle_no,
+      </if>
+      <if test="vehicleColor != null" >
+        vehicle_color,
+      </if>
+      <if test="vehicleNative != null" >
+        vehicle_native,
+      </if>
+      <if test="tonnage != null" >
+        tonnage,
+      </if>
+      <if test="seat != null" >
+        seat,
+      </if>
+      <if test="vehicleType != null" >
+        vehicle_type,
+      </if>
+      <if test="engineNo != null" >
+        engine_no,
+      </if>
+      <if test="vin != null" >
+        vin,
+      </if>
+      <if test="description != null" >
+        description,
+      </if>
+      <if test="vehicleTypeKind != null" >
+        vehicle_type_kind,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+      <if test="vehicleOwner != null" >
+        vehicle_owner,
+      </if>
+      <if test="drivingPic != null" >
+        driving_pic,
+      </if>
+      <if test="drivingDownPic != null" >
+        driving_down_pic,
+      </if>
+      <if test="useQuality != null" >
+        use_quality,
+      </if>
+      <if test="brandModel != null" >
+        brand_model,
+      </if>
+      <if test="registerTime != null" >
+        register_time,
+      </if>
+      <if test="certificateTime != null" >
+        certificate_time,
+      </if>
+      <if test="headstockColor != null" >
+        headstock_color,
+      </if>
+      <if test="issuedBy != null" >
+        issued_by,
+      </if>
+      <if test="address != null" >
+        address,
+      </if>
+      <if test="etcApplyStatus != null" >
+        etc_apply_status,
+      </if>
+      <if test="remarks != null" >
+        remarks,
+      </if>
+      <if test="approvalResult != null" >
+        approval_result,
+      </if>
+      <if test="isDelete != null" >
+        is_delete,
+      </if>
+      <if test="deleteTime != null" >
+        delete_time,
+      </if>
+      <if test="tenantId != null" >
+        tenant_id,
+      </if>
+      <if test="bizId != null" >
+        biz_id,
+      </if>
+      <if test="openRemark != null" >
+        open_remark,
+      </if>
+      <if test="carType != null" >
+        car_type,
+      </if>
+      <if test="modify != null" >
+        modify,
+      </if>
+      <if test="etcCardNo != null" >
+        etc_card_no,
+      </if>
+      <if test="operateType != null" >
+        operate_type,
+      </if>
+      <if test="etcType != null" >
+        etc_type,
+      </if>
+      <if test="headPic != null" >
+        head_pic,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="carNum != null" >
+        #{carNum,jdbcType=VARCHAR},
+      </if>
+      <if test="customerId != null" >
+        #{customerId,jdbcType=BIGINT},
+      </if>
+      <if test="applyNum != null" >
+        #{applyNum,jdbcType=VARCHAR},
+      </if>
+      <if test="creditStatus != null" >
+        #{creditStatus,jdbcType=INTEGER},
+      </if>
+      <if test="channelSource != null" >
+        #{channelSource,jdbcType=VARCHAR},
+      </if>
+      <if test="customerName != null" >
+        #{customerName,jdbcType=VARCHAR},
+      </if>
+      <if test="customerPhone != null" >
+        #{customerPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="customerNum != null" >
+        #{customerNum,jdbcType=VARCHAR},
+      </if>
+      <if test="productId != null" >
+        #{productId,jdbcType=BIGINT},
+      </if>
+      <if test="productNo != null" >
+        #{productNo,jdbcType=VARCHAR},
+      </if>
+      <if test="vehicleNo != null" >
+        #{vehicleNo,jdbcType=VARCHAR},
+      </if>
+      <if test="vehicleColor != null" >
+        #{vehicleColor,jdbcType=VARCHAR},
+      </if>
+      <if test="vehicleNative != null" >
+        #{vehicleNative,jdbcType=VARCHAR},
+      </if>
+      <if test="tonnage != null" >
+        #{tonnage,jdbcType=BIGINT},
+      </if>
+      <if test="seat != null" >
+        #{seat,jdbcType=VARCHAR},
+      </if>
+      <if test="vehicleType != null" >
+        #{vehicleType,jdbcType=VARCHAR},
+      </if>
+      <if test="engineNo != null" >
+        #{engineNo,jdbcType=VARCHAR},
+      </if>
+      <if test="vin != null" >
+        #{vin,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null" >
+        #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="vehicleTypeKind != null" >
+        #{vehicleTypeKind,jdbcType=BIGINT},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="vehicleOwner != null" >
+        #{vehicleOwner,jdbcType=VARCHAR},
+      </if>
+      <if test="drivingPic != null" >
+        #{drivingPic,jdbcType=VARCHAR},
+      </if>
+      <if test="drivingDownPic != null" >
+        #{drivingDownPic,jdbcType=VARCHAR},
+      </if>
+      <if test="useQuality != null" >
+        #{useQuality,jdbcType=VARCHAR},
+      </if>
+      <if test="brandModel != null" >
+        #{brandModel,jdbcType=VARCHAR},
+      </if>
+      <if test="registerTime != null" >
+        #{registerTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="certificateTime != null" >
+        #{certificateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="headstockColor != null" >
+        #{headstockColor,jdbcType=INTEGER},
+      </if>
+      <if test="issuedBy != null" >
+        #{issuedBy,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null" >
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="etcApplyStatus != null" >
+        #{etcApplyStatus,jdbcType=INTEGER},
+      </if>
+      <if test="remarks != null" >
+        #{remarks,jdbcType=VARCHAR},
+      </if>
+      <if test="approvalResult != null" >
+        #{approvalResult,jdbcType=INTEGER},
+      </if>
+      <if test="isDelete != null" >
+        #{isDelete,jdbcType=INTEGER},
+      </if>
+      <if test="deleteTime != null" >
+        #{deleteTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="tenantId != null" >
+        #{tenantId,jdbcType=BIGINT},
+      </if>
+      <if test="bizId != null" >
+        #{bizId,jdbcType=VARCHAR},
+      </if>
+      <if test="openRemark != null" >
+        #{openRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="carType != null" >
+        #{carType,jdbcType=VARCHAR},
+      </if>
+      <if test="modify != null" >
+        #{modify,jdbcType=VARCHAR},
+      </if>
+      <if test="etcCardNo != null" >
+        #{etcCardNo,jdbcType=VARCHAR},
+      </if>
+      <if test="operateType != null" >
+        #{operateType,jdbcType=TINYINT},
+      </if>
+      <if test="etcType != null" >
+        #{etcType,jdbcType=TINYINT},
+      </if>
+      <if test="headPic != null" >
+        #{headPic,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="twm.mybatisdemo.pojo.EtcCarInfoExample" resultType="java.lang.Integer" >
+    select count(*) from etc_car_info
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update etc_car_info
+    <set >
+      <if test="record.id != null" >
+        id = #{record.id,jdbcType=BIGINT},
+      </if>
+      <if test="record.carNum != null" >
+        car_num = #{record.carNum,jdbcType=VARCHAR},
+      </if>
+      <if test="record.customerId != null" >
+        customer_id = #{record.customerId,jdbcType=BIGINT},
+      </if>
+      <if test="record.applyNum != null" >
+        apply_num = #{record.applyNum,jdbcType=VARCHAR},
+      </if>
+      <if test="record.creditStatus != null" >
+        credit_status = #{record.creditStatus,jdbcType=INTEGER},
+      </if>
+      <if test="record.channelSource != null" >
+        channel_source = #{record.channelSource,jdbcType=VARCHAR},
+      </if>
+      <if test="record.customerName != null" >
+        customer_name = #{record.customerName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.customerPhone != null" >
+        customer_phone = #{record.customerPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="record.customerNum != null" >
+        customer_num = #{record.customerNum,jdbcType=VARCHAR},
+      </if>
+      <if test="record.productId != null" >
+        product_id = #{record.productId,jdbcType=BIGINT},
+      </if>
+      <if test="record.productNo != null" >
+        product_no = #{record.productNo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.vehicleNo != null" >
+        vehicle_no = #{record.vehicleNo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.vehicleColor != null" >
+        vehicle_color = #{record.vehicleColor,jdbcType=VARCHAR},
+      </if>
+      <if test="record.vehicleNative != null" >
+        vehicle_native = #{record.vehicleNative,jdbcType=VARCHAR},
+      </if>
+      <if test="record.tonnage != null" >
+        tonnage = #{record.tonnage,jdbcType=BIGINT},
+      </if>
+      <if test="record.seat != null" >
+        seat = #{record.seat,jdbcType=VARCHAR},
+      </if>
+      <if test="record.vehicleType != null" >
+        vehicle_type = #{record.vehicleType,jdbcType=VARCHAR},
+      </if>
+      <if test="record.engineNo != null" >
+        engine_no = #{record.engineNo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.vin != null" >
+        vin = #{record.vin,jdbcType=VARCHAR},
+      </if>
+      <if test="record.description != null" >
+        description = #{record.description,jdbcType=VARCHAR},
+      </if>
+      <if test="record.vehicleTypeKind != null" >
+        vehicle_type_kind = #{record.vehicleTypeKind,jdbcType=BIGINT},
+      </if>
+      <if test="record.createTime != null" >
+        create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.updateTime != null" >
+        update_time = #{record.updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.vehicleOwner != null" >
+        vehicle_owner = #{record.vehicleOwner,jdbcType=VARCHAR},
+      </if>
+      <if test="record.drivingPic != null" >
+        driving_pic = #{record.drivingPic,jdbcType=VARCHAR},
+      </if>
+      <if test="record.drivingDownPic != null" >
+        driving_down_pic = #{record.drivingDownPic,jdbcType=VARCHAR},
+      </if>
+      <if test="record.useQuality != null" >
+        use_quality = #{record.useQuality,jdbcType=VARCHAR},
+      </if>
+      <if test="record.brandModel != null" >
+        brand_model = #{record.brandModel,jdbcType=VARCHAR},
+      </if>
+      <if test="record.registerTime != null" >
+        register_time = #{record.registerTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.certificateTime != null" >
+        certificate_time = #{record.certificateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.headstockColor != null" >
+        headstock_color = #{record.headstockColor,jdbcType=INTEGER},
+      </if>
+      <if test="record.issuedBy != null" >
+        issued_by = #{record.issuedBy,jdbcType=VARCHAR},
+      </if>
+      <if test="record.address != null" >
+        address = #{record.address,jdbcType=VARCHAR},
+      </if>
+      <if test="record.etcApplyStatus != null" >
+        etc_apply_status = #{record.etcApplyStatus,jdbcType=INTEGER},
+      </if>
+      <if test="record.remarks != null" >
+        remarks = #{record.remarks,jdbcType=VARCHAR},
+      </if>
+      <if test="record.approvalResult != null" >
+        approval_result = #{record.approvalResult,jdbcType=INTEGER},
+      </if>
+      <if test="record.isDelete != null" >
+        is_delete = #{record.isDelete,jdbcType=INTEGER},
+      </if>
+      <if test="record.deleteTime != null" >
+        delete_time = #{record.deleteTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.tenantId != null" >
+        tenant_id = #{record.tenantId,jdbcType=BIGINT},
+      </if>
+      <if test="record.bizId != null" >
+        biz_id = #{record.bizId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.openRemark != null" >
+        open_remark = #{record.openRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="record.carType != null" >
+        car_type = #{record.carType,jdbcType=VARCHAR},
+      </if>
+      <if test="record.modify != null" >
+        modify = #{record.modify,jdbcType=VARCHAR},
+      </if>
+      <if test="record.etcCardNo != null" >
+        etc_card_no = #{record.etcCardNo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.operateType != null" >
+        operate_type = #{record.operateType,jdbcType=TINYINT},
+      </if>
+      <if test="record.etcType != null" >
+        etc_type = #{record.etcType,jdbcType=TINYINT},
+      </if>
+      <if test="record.headPic != null" >
+        head_pic = #{record.headPic,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update etc_car_info
+    set id = #{record.id,jdbcType=BIGINT},
+      car_num = #{record.carNum,jdbcType=VARCHAR},
+      customer_id = #{record.customerId,jdbcType=BIGINT},
+      apply_num = #{record.applyNum,jdbcType=VARCHAR},
+      credit_status = #{record.creditStatus,jdbcType=INTEGER},
+      channel_source = #{record.channelSource,jdbcType=VARCHAR},
+      customer_name = #{record.customerName,jdbcType=VARCHAR},
+      customer_phone = #{record.customerPhone,jdbcType=VARCHAR},
+      customer_num = #{record.customerNum,jdbcType=VARCHAR},
+      product_id = #{record.productId,jdbcType=BIGINT},
+      product_no = #{record.productNo,jdbcType=VARCHAR},
+      vehicle_no = #{record.vehicleNo,jdbcType=VARCHAR},
+      vehicle_color = #{record.vehicleColor,jdbcType=VARCHAR},
+      vehicle_native = #{record.vehicleNative,jdbcType=VARCHAR},
+      tonnage = #{record.tonnage,jdbcType=BIGINT},
+      seat = #{record.seat,jdbcType=VARCHAR},
+      vehicle_type = #{record.vehicleType,jdbcType=VARCHAR},
+      engine_no = #{record.engineNo,jdbcType=VARCHAR},
+      vin = #{record.vin,jdbcType=VARCHAR},
+      description = #{record.description,jdbcType=VARCHAR},
+      vehicle_type_kind = #{record.vehicleTypeKind,jdbcType=BIGINT},
+      create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      update_time = #{record.updateTime,jdbcType=TIMESTAMP},
+      vehicle_owner = #{record.vehicleOwner,jdbcType=VARCHAR},
+      driving_pic = #{record.drivingPic,jdbcType=VARCHAR},
+      driving_down_pic = #{record.drivingDownPic,jdbcType=VARCHAR},
+      use_quality = #{record.useQuality,jdbcType=VARCHAR},
+      brand_model = #{record.brandModel,jdbcType=VARCHAR},
+      register_time = #{record.registerTime,jdbcType=TIMESTAMP},
+      certificate_time = #{record.certificateTime,jdbcType=TIMESTAMP},
+      headstock_color = #{record.headstockColor,jdbcType=INTEGER},
+      issued_by = #{record.issuedBy,jdbcType=VARCHAR},
+      address = #{record.address,jdbcType=VARCHAR},
+      etc_apply_status = #{record.etcApplyStatus,jdbcType=INTEGER},
+      remarks = #{record.remarks,jdbcType=VARCHAR},
+      approval_result = #{record.approvalResult,jdbcType=INTEGER},
+      is_delete = #{record.isDelete,jdbcType=INTEGER},
+      delete_time = #{record.deleteTime,jdbcType=TIMESTAMP},
+      tenant_id = #{record.tenantId,jdbcType=BIGINT},
+      biz_id = #{record.bizId,jdbcType=VARCHAR},
+      open_remark = #{record.openRemark,jdbcType=VARCHAR},
+      car_type = #{record.carType,jdbcType=VARCHAR},
+      modify = #{record.modify,jdbcType=VARCHAR},
+      etc_card_no = #{record.etcCardNo,jdbcType=VARCHAR},
+      operate_type = #{record.operateType,jdbcType=TINYINT},
+      etc_type = #{record.etcType,jdbcType=TINYINT},
+      head_pic = #{record.headPic,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="twm.mybatisdemo.pojo.EtcCarInfo" >
+    update etc_car_info
+    <set >
+      <if test="carNum != null" >
+        car_num = #{carNum,jdbcType=VARCHAR},
+      </if>
+      <if test="customerId != null" >
+        customer_id = #{customerId,jdbcType=BIGINT},
+      </if>
+      <if test="applyNum != null" >
+        apply_num = #{applyNum,jdbcType=VARCHAR},
+      </if>
+      <if test="creditStatus != null" >
+        credit_status = #{creditStatus,jdbcType=INTEGER},
+      </if>
+      <if test="channelSource != null" >
+        channel_source = #{channelSource,jdbcType=VARCHAR},
+      </if>
+      <if test="customerName != null" >
+        customer_name = #{customerName,jdbcType=VARCHAR},
+      </if>
+      <if test="customerPhone != null" >
+        customer_phone = #{customerPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="customerNum != null" >
+        customer_num = #{customerNum,jdbcType=VARCHAR},
+      </if>
+      <if test="productId != null" >
+        product_id = #{productId,jdbcType=BIGINT},
+      </if>
+      <if test="productNo != null" >
+        product_no = #{productNo,jdbcType=VARCHAR},
+      </if>
+      <if test="vehicleNo != null" >
+        vehicle_no = #{vehicleNo,jdbcType=VARCHAR},
+      </if>
+      <if test="vehicleColor != null" >
+        vehicle_color = #{vehicleColor,jdbcType=VARCHAR},
+      </if>
+      <if test="vehicleNative != null" >
+        vehicle_native = #{vehicleNative,jdbcType=VARCHAR},
+      </if>
+      <if test="tonnage != null" >
+        tonnage = #{tonnage,jdbcType=BIGINT},
+      </if>
+      <if test="seat != null" >
+        seat = #{seat,jdbcType=VARCHAR},
+      </if>
+      <if test="vehicleType != null" >
+        vehicle_type = #{vehicleType,jdbcType=VARCHAR},
+      </if>
+      <if test="engineNo != null" >
+        engine_no = #{engineNo,jdbcType=VARCHAR},
+      </if>
+      <if test="vin != null" >
+        vin = #{vin,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null" >
+        description = #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="vehicleTypeKind != null" >
+        vehicle_type_kind = #{vehicleTypeKind,jdbcType=BIGINT},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="vehicleOwner != null" >
+        vehicle_owner = #{vehicleOwner,jdbcType=VARCHAR},
+      </if>
+      <if test="drivingPic != null" >
+        driving_pic = #{drivingPic,jdbcType=VARCHAR},
+      </if>
+      <if test="drivingDownPic != null" >
+        driving_down_pic = #{drivingDownPic,jdbcType=VARCHAR},
+      </if>
+      <if test="useQuality != null" >
+        use_quality = #{useQuality,jdbcType=VARCHAR},
+      </if>
+      <if test="brandModel != null" >
+        brand_model = #{brandModel,jdbcType=VARCHAR},
+      </if>
+      <if test="registerTime != null" >
+        register_time = #{registerTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="certificateTime != null" >
+        certificate_time = #{certificateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="headstockColor != null" >
+        headstock_color = #{headstockColor,jdbcType=INTEGER},
+      </if>
+      <if test="issuedBy != null" >
+        issued_by = #{issuedBy,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null" >
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="etcApplyStatus != null" >
+        etc_apply_status = #{etcApplyStatus,jdbcType=INTEGER},
+      </if>
+      <if test="remarks != null" >
+        remarks = #{remarks,jdbcType=VARCHAR},
+      </if>
+      <if test="approvalResult != null" >
+        approval_result = #{approvalResult,jdbcType=INTEGER},
+      </if>
+      <if test="isDelete != null" >
+        is_delete = #{isDelete,jdbcType=INTEGER},
+      </if>
+      <if test="deleteTime != null" >
+        delete_time = #{deleteTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="tenantId != null" >
+        tenant_id = #{tenantId,jdbcType=BIGINT},
+      </if>
+      <if test="bizId != null" >
+        biz_id = #{bizId,jdbcType=VARCHAR},
+      </if>
+      <if test="openRemark != null" >
+        open_remark = #{openRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="carType != null" >
+        car_type = #{carType,jdbcType=VARCHAR},
+      </if>
+      <if test="modify != null" >
+        modify = #{modify,jdbcType=VARCHAR},
+      </if>
+      <if test="etcCardNo != null" >
+        etc_card_no = #{etcCardNo,jdbcType=VARCHAR},
+      </if>
+      <if test="operateType != null" >
+        operate_type = #{operateType,jdbcType=TINYINT},
+      </if>
+      <if test="etcType != null" >
+        etc_type = #{etcType,jdbcType=TINYINT},
+      </if>
+      <if test="headPic != null" >
+        head_pic = #{headPic,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="twm.mybatisdemo.pojo.EtcCarInfo" >
+    update etc_car_info
+    set car_num = #{carNum,jdbcType=VARCHAR},
+      customer_id = #{customerId,jdbcType=BIGINT},
+      apply_num = #{applyNum,jdbcType=VARCHAR},
+      credit_status = #{creditStatus,jdbcType=INTEGER},
+      channel_source = #{channelSource,jdbcType=VARCHAR},
+      customer_name = #{customerName,jdbcType=VARCHAR},
+      customer_phone = #{customerPhone,jdbcType=VARCHAR},
+      customer_num = #{customerNum,jdbcType=VARCHAR},
+      product_id = #{productId,jdbcType=BIGINT},
+      product_no = #{productNo,jdbcType=VARCHAR},
+      vehicle_no = #{vehicleNo,jdbcType=VARCHAR},
+      vehicle_color = #{vehicleColor,jdbcType=VARCHAR},
+      vehicle_native = #{vehicleNative,jdbcType=VARCHAR},
+      tonnage = #{tonnage,jdbcType=BIGINT},
+      seat = #{seat,jdbcType=VARCHAR},
+      vehicle_type = #{vehicleType,jdbcType=VARCHAR},
+      engine_no = #{engineNo,jdbcType=VARCHAR},
+      vin = #{vin,jdbcType=VARCHAR},
+      description = #{description,jdbcType=VARCHAR},
+      vehicle_type_kind = #{vehicleTypeKind,jdbcType=BIGINT},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      vehicle_owner = #{vehicleOwner,jdbcType=VARCHAR},
+      driving_pic = #{drivingPic,jdbcType=VARCHAR},
+      driving_down_pic = #{drivingDownPic,jdbcType=VARCHAR},
+      use_quality = #{useQuality,jdbcType=VARCHAR},
+      brand_model = #{brandModel,jdbcType=VARCHAR},
+      register_time = #{registerTime,jdbcType=TIMESTAMP},
+      certificate_time = #{certificateTime,jdbcType=TIMESTAMP},
+      headstock_color = #{headstockColor,jdbcType=INTEGER},
+      issued_by = #{issuedBy,jdbcType=VARCHAR},
+      address = #{address,jdbcType=VARCHAR},
+      etc_apply_status = #{etcApplyStatus,jdbcType=INTEGER},
+      remarks = #{remarks,jdbcType=VARCHAR},
+      approval_result = #{approvalResult,jdbcType=INTEGER},
+      is_delete = #{isDelete,jdbcType=INTEGER},
+      delete_time = #{deleteTime,jdbcType=TIMESTAMP},
+      tenant_id = #{tenantId,jdbcType=BIGINT},
+      biz_id = #{bizId,jdbcType=VARCHAR},
+      open_remark = #{openRemark,jdbcType=VARCHAR},
+      car_type = #{carType,jdbcType=VARCHAR},
+      modify = #{modify,jdbcType=VARCHAR},
+      etc_card_no = #{etcCardNo,jdbcType=VARCHAR},
+      operate_type = #{operateType,jdbcType=TINYINT},
+      etc_type = #{etcType,jdbcType=TINYINT},
+      head_pic = #{headPic,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

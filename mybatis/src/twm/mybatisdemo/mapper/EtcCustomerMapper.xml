@@ -1,0 +1,628 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="twm.mybatisdemo.mapper.EtcCustomerMapper" >
+  <resultMap id="BaseResultMap" type="twm.mybatisdemo.pojo.EtcCustomer" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="uuid" property="uuid" jdbcType="VARCHAR" />
+    <result column="token" property="token" jdbcType="VARCHAR" />
+    <result column="user_id" property="userId" jdbcType="VARCHAR" />
+    <result column="contact_phone" property="contactPhone" jdbcType="VARCHAR" />
+    <result column="master_account_no" property="masterAccountNo" jdbcType="VARCHAR" />
+    <result column="customer_num" property="customerNum" jdbcType="VARCHAR" />
+    <result column="invitation_code" property="invitationCode" jdbcType="VARCHAR" />
+    <result column="customer_phone" property="customerPhone" jdbcType="VARCHAR" />
+    <result column="customer_name" property="customerName" jdbcType="VARCHAR" />
+    <result column="customer_id_num" property="customerIdNum" jdbcType="VARCHAR" />
+    <result column="customer_sex" property="customerSex" jdbcType="VARCHAR" />
+    <result column="customer_ethnic" property="customerEthnic" jdbcType="VARCHAR" />
+    <result column="customer_birth" property="customerBirth" jdbcType="VARCHAR" />
+    <result column="customer_adress" property="customerAdress" jdbcType="VARCHAR" />
+    <result column="legal_person_iss_authority" property="legalPersonIssAuthority" jdbcType="VARCHAR" />
+    <result column="customer_vaild_date" property="customerVaildDate" jdbcType="VARCHAR" />
+    <result column="customer_id_up_url" property="customerIdUpUrl" jdbcType="VARCHAR" />
+    <result column="customer_id_down_url" property="customerIdDownUrl" jdbcType="VARCHAR" />
+    <result column="mail_account" property="mailAccount" jdbcType="VARCHAR" />
+    <result column="origin_customer_no" property="originCustomerNo" jdbcType="VARCHAR" />
+    <result column="customer_channel" property="customerChannel" jdbcType="VARCHAR" />
+    <result column="business_name" property="businessName" jdbcType="VARCHAR" />
+    <result column="business_id_num" property="businessIdNum" jdbcType="VARCHAR" />
+    <result column="business_license" property="businessLicense" jdbcType="VARCHAR" />
+    <result column="business_license_url" property="businessLicenseUrl" jdbcType="VARCHAR" />
+    <result column="certified_status" property="certifiedStatus" jdbcType="TINYINT" />
+    <result column="account_type" property="accountType" jdbcType="TINYINT" />
+    <result column="document_type" property="documentType" jdbcType="VARCHAR" />
+    <result column="axq_account" property="axqAccount" jdbcType="VARCHAR" />
+    <result column="contract_no" property="contractNo" jdbcType="VARCHAR" />
+    <result column="customer_biz_id" property="customerBizId" jdbcType="VARCHAR" />
+    <result column="customer_biz_id_js" property="customerBizIdJs" jdbcType="VARCHAR" />
+    <result column="protocal_no" property="protocalNo" jdbcType="VARCHAR" />
+    <result column="status" property="status" jdbcType="BIT" />
+    <result column="operate_id" property="operateId" jdbcType="BIGINT" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="update_by" property="updateBy" jdbcType="BIGINT" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="remarks" property="remarks" jdbcType="VARCHAR" />
+    <result column="is_delete" property="isDelete" jdbcType="TINYINT" />
+    <result column="redundance1" property="redundance1" jdbcType="VARCHAR" />
+    <result column="redundance2" property="redundance2" jdbcType="VARCHAR" />
+    <result column="redundance3" property="redundance3" jdbcType="VARCHAR" />
+    <result column="redundance4" property="redundance4" jdbcType="VARCHAR" />
+    <result column="redundance5" property="redundance5" jdbcType="VARCHAR" />
+    <result column="ip_role_id" property="ipRoleId" jdbcType="VARCHAR" />
+    <result column="cust_ip_role_id" property="custIpRoleId" jdbcType="VARCHAR" />
+    <result column="site_user_id" property="siteUserId" jdbcType="VARCHAR" />
+    <result column="auth_channel" property="authChannel" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, uuid, token, user_id, contact_phone, master_account_no, customer_num, invitation_code, 
+    customer_phone, customer_name, customer_id_num, customer_sex, customer_ethnic, customer_birth, 
+    customer_adress, legal_person_iss_authority, customer_vaild_date, customer_id_up_url, 
+    customer_id_down_url, mail_account, origin_customer_no, customer_channel, business_name, 
+    business_id_num, business_license, business_license_url, certified_status, account_type, 
+    document_type, axq_account, contract_no, customer_biz_id, customer_biz_id_js, protocal_no, 
+    status, operate_id, create_time, update_by, update_time, remarks, is_delete, redundance1, 
+    redundance2, redundance3, redundance4, redundance5, ip_role_id, cust_ip_role_id, 
+    site_user_id, auth_channel
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from etc_customer
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from etc_customer
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="twm.mybatisdemo.pojo.EtcCustomer" >
+    insert into etc_customer (id, uuid, token, 
+      user_id, contact_phone, master_account_no, 
+      customer_num, invitation_code, customer_phone, 
+      customer_name, customer_id_num, customer_sex, 
+      customer_ethnic, customer_birth, customer_adress, 
+      legal_person_iss_authority, customer_vaild_date, 
+      customer_id_up_url, customer_id_down_url, mail_account, 
+      origin_customer_no, customer_channel, business_name, 
+      business_id_num, business_license, business_license_url, 
+      certified_status, account_type, document_type, 
+      axq_account, contract_no, customer_biz_id, 
+      customer_biz_id_js, protocal_no, status, 
+      operate_id, create_time, update_by, 
+      update_time, remarks, is_delete, 
+      redundance1, redundance2, redundance3, 
+      redundance4, redundance5, ip_role_id, 
+      cust_ip_role_id, site_user_id, auth_channel
+      )
+    values (#{id,jdbcType=BIGINT}, #{uuid,jdbcType=VARCHAR}, #{token,jdbcType=VARCHAR}, 
+      #{userId,jdbcType=VARCHAR}, #{contactPhone,jdbcType=VARCHAR}, #{masterAccountNo,jdbcType=VARCHAR}, 
+      #{customerNum,jdbcType=VARCHAR}, #{invitationCode,jdbcType=VARCHAR}, #{customerPhone,jdbcType=VARCHAR}, 
+      #{customerName,jdbcType=VARCHAR}, #{customerIdNum,jdbcType=VARCHAR}, #{customerSex,jdbcType=VARCHAR}, 
+      #{customerEthnic,jdbcType=VARCHAR}, #{customerBirth,jdbcType=VARCHAR}, #{customerAdress,jdbcType=VARCHAR}, 
+      #{legalPersonIssAuthority,jdbcType=VARCHAR}, #{customerVaildDate,jdbcType=VARCHAR}, 
+      #{customerIdUpUrl,jdbcType=VARCHAR}, #{customerIdDownUrl,jdbcType=VARCHAR}, #{mailAccount,jdbcType=VARCHAR}, 
+      #{originCustomerNo,jdbcType=VARCHAR}, #{customerChannel,jdbcType=VARCHAR}, #{businessName,jdbcType=VARCHAR}, 
+      #{businessIdNum,jdbcType=VARCHAR}, #{businessLicense,jdbcType=VARCHAR}, #{businessLicenseUrl,jdbcType=VARCHAR}, 
+      #{certifiedStatus,jdbcType=TINYINT}, #{accountType,jdbcType=TINYINT}, #{documentType,jdbcType=VARCHAR}, 
+      #{axqAccount,jdbcType=VARCHAR}, #{contractNo,jdbcType=VARCHAR}, #{customerBizId,jdbcType=VARCHAR}, 
+      #{customerBizIdJs,jdbcType=VARCHAR}, #{protocalNo,jdbcType=VARCHAR}, #{status,jdbcType=BIT}, 
+      #{operateId,jdbcType=BIGINT}, #{createTime,jdbcType=TIMESTAMP}, #{updateBy,jdbcType=BIGINT}, 
+      #{updateTime,jdbcType=TIMESTAMP}, #{remarks,jdbcType=VARCHAR}, #{isDelete,jdbcType=TINYINT}, 
+      #{redundance1,jdbcType=VARCHAR}, #{redundance2,jdbcType=VARCHAR}, #{redundance3,jdbcType=VARCHAR}, 
+      #{redundance4,jdbcType=VARCHAR}, #{redundance5,jdbcType=VARCHAR}, #{ipRoleId,jdbcType=VARCHAR}, 
+      #{custIpRoleId,jdbcType=VARCHAR}, #{siteUserId,jdbcType=VARCHAR}, #{authChannel,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="twm.mybatisdemo.pojo.EtcCustomer" >
+    insert into etc_customer
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="uuid != null" >
+        uuid,
+      </if>
+      <if test="token != null" >
+        token,
+      </if>
+      <if test="userId != null" >
+        user_id,
+      </if>
+      <if test="contactPhone != null" >
+        contact_phone,
+      </if>
+      <if test="masterAccountNo != null" >
+        master_account_no,
+      </if>
+      <if test="customerNum != null" >
+        customer_num,
+      </if>
+      <if test="invitationCode != null" >
+        invitation_code,
+      </if>
+      <if test="customerPhone != null" >
+        customer_phone,
+      </if>
+      <if test="customerName != null" >
+        customer_name,
+      </if>
+      <if test="customerIdNum != null" >
+        customer_id_num,
+      </if>
+      <if test="customerSex != null" >
+        customer_sex,
+      </if>
+      <if test="customerEthnic != null" >
+        customer_ethnic,
+      </if>
+      <if test="customerBirth != null" >
+        customer_birth,
+      </if>
+      <if test="customerAdress != null" >
+        customer_adress,
+      </if>
+      <if test="legalPersonIssAuthority != null" >
+        legal_person_iss_authority,
+      </if>
+      <if test="customerVaildDate != null" >
+        customer_vaild_date,
+      </if>
+      <if test="customerIdUpUrl != null" >
+        customer_id_up_url,
+      </if>
+      <if test="customerIdDownUrl != null" >
+        customer_id_down_url,
+      </if>
+      <if test="mailAccount != null" >
+        mail_account,
+      </if>
+      <if test="originCustomerNo != null" >
+        origin_customer_no,
+      </if>
+      <if test="customerChannel != null" >
+        customer_channel,
+      </if>
+      <if test="businessName != null" >
+        business_name,
+      </if>
+      <if test="businessIdNum != null" >
+        business_id_num,
+      </if>
+      <if test="businessLicense != null" >
+        business_license,
+      </if>
+      <if test="businessLicenseUrl != null" >
+        business_license_url,
+      </if>
+      <if test="certifiedStatus != null" >
+        certified_status,
+      </if>
+      <if test="accountType != null" >
+        account_type,
+      </if>
+      <if test="documentType != null" >
+        document_type,
+      </if>
+      <if test="axqAccount != null" >
+        axq_account,
+      </if>
+      <if test="contractNo != null" >
+        contract_no,
+      </if>
+      <if test="customerBizId != null" >
+        customer_biz_id,
+      </if>
+      <if test="customerBizIdJs != null" >
+        customer_biz_id_js,
+      </if>
+      <if test="protocalNo != null" >
+        protocal_no,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="operateId != null" >
+        operate_id,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="updateBy != null" >
+        update_by,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+      <if test="remarks != null" >
+        remarks,
+      </if>
+      <if test="isDelete != null" >
+        is_delete,
+      </if>
+      <if test="redundance1 != null" >
+        redundance1,
+      </if>
+      <if test="redundance2 != null" >
+        redundance2,
+      </if>
+      <if test="redundance3 != null" >
+        redundance3,
+      </if>
+      <if test="redundance4 != null" >
+        redundance4,
+      </if>
+      <if test="redundance5 != null" >
+        redundance5,
+      </if>
+      <if test="ipRoleId != null" >
+        ip_role_id,
+      </if>
+      <if test="custIpRoleId != null" >
+        cust_ip_role_id,
+      </if>
+      <if test="siteUserId != null" >
+        site_user_id,
+      </if>
+      <if test="authChannel != null" >
+        auth_channel,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="uuid != null" >
+        #{uuid,jdbcType=VARCHAR},
+      </if>
+      <if test="token != null" >
+        #{token,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="contactPhone != null" >
+        #{contactPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="masterAccountNo != null" >
+        #{masterAccountNo,jdbcType=VARCHAR},
+      </if>
+      <if test="customerNum != null" >
+        #{customerNum,jdbcType=VARCHAR},
+      </if>
+      <if test="invitationCode != null" >
+        #{invitationCode,jdbcType=VARCHAR},
+      </if>
+      <if test="customerPhone != null" >
+        #{customerPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="customerName != null" >
+        #{customerName,jdbcType=VARCHAR},
+      </if>
+      <if test="customerIdNum != null" >
+        #{customerIdNum,jdbcType=VARCHAR},
+      </if>
+      <if test="customerSex != null" >
+        #{customerSex,jdbcType=VARCHAR},
+      </if>
+      <if test="customerEthnic != null" >
+        #{customerEthnic,jdbcType=VARCHAR},
+      </if>
+      <if test="customerBirth != null" >
+        #{customerBirth,jdbcType=VARCHAR},
+      </if>
+      <if test="customerAdress != null" >
+        #{customerAdress,jdbcType=VARCHAR},
+      </if>
+      <if test="legalPersonIssAuthority != null" >
+        #{legalPersonIssAuthority,jdbcType=VARCHAR},
+      </if>
+      <if test="customerVaildDate != null" >
+        #{customerVaildDate,jdbcType=VARCHAR},
+      </if>
+      <if test="customerIdUpUrl != null" >
+        #{customerIdUpUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="customerIdDownUrl != null" >
+        #{customerIdDownUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="mailAccount != null" >
+        #{mailAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="originCustomerNo != null" >
+        #{originCustomerNo,jdbcType=VARCHAR},
+      </if>
+      <if test="customerChannel != null" >
+        #{customerChannel,jdbcType=VARCHAR},
+      </if>
+      <if test="businessName != null" >
+        #{businessName,jdbcType=VARCHAR},
+      </if>
+      <if test="businessIdNum != null" >
+        #{businessIdNum,jdbcType=VARCHAR},
+      </if>
+      <if test="businessLicense != null" >
+        #{businessLicense,jdbcType=VARCHAR},
+      </if>
+      <if test="businessLicenseUrl != null" >
+        #{businessLicenseUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="certifiedStatus != null" >
+        #{certifiedStatus,jdbcType=TINYINT},
+      </if>
+      <if test="accountType != null" >
+        #{accountType,jdbcType=TINYINT},
+      </if>
+      <if test="documentType != null" >
+        #{documentType,jdbcType=VARCHAR},
+      </if>
+      <if test="axqAccount != null" >
+        #{axqAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="contractNo != null" >
+        #{contractNo,jdbcType=VARCHAR},
+      </if>
+      <if test="customerBizId != null" >
+        #{customerBizId,jdbcType=VARCHAR},
+      </if>
+      <if test="customerBizIdJs != null" >
+        #{customerBizIdJs,jdbcType=VARCHAR},
+      </if>
+      <if test="protocalNo != null" >
+        #{protocalNo,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=BIT},
+      </if>
+      <if test="operateId != null" >
+        #{operateId,jdbcType=BIGINT},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateBy != null" >
+        #{updateBy,jdbcType=BIGINT},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="remarks != null" >
+        #{remarks,jdbcType=VARCHAR},
+      </if>
+      <if test="isDelete != null" >
+        #{isDelete,jdbcType=TINYINT},
+      </if>
+      <if test="redundance1 != null" >
+        #{redundance1,jdbcType=VARCHAR},
+      </if>
+      <if test="redundance2 != null" >
+        #{redundance2,jdbcType=VARCHAR},
+      </if>
+      <if test="redundance3 != null" >
+        #{redundance3,jdbcType=VARCHAR},
+      </if>
+      <if test="redundance4 != null" >
+        #{redundance4,jdbcType=VARCHAR},
+      </if>
+      <if test="redundance5 != null" >
+        #{redundance5,jdbcType=VARCHAR},
+      </if>
+      <if test="ipRoleId != null" >
+        #{ipRoleId,jdbcType=VARCHAR},
+      </if>
+      <if test="custIpRoleId != null" >
+        #{custIpRoleId,jdbcType=VARCHAR},
+      </if>
+      <if test="siteUserId != null" >
+        #{siteUserId,jdbcType=VARCHAR},
+      </if>
+      <if test="authChannel != null" >
+        #{authChannel,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="twm.mybatisdemo.pojo.EtcCustomer" >
+    update etc_customer
+    <set >
+      <if test="uuid != null" >
+        uuid = #{uuid,jdbcType=VARCHAR},
+      </if>
+      <if test="token != null" >
+        token = #{token,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null" >
+        user_id = #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="contactPhone != null" >
+        contact_phone = #{contactPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="masterAccountNo != null" >
+        master_account_no = #{masterAccountNo,jdbcType=VARCHAR},
+      </if>
+      <if test="customerNum != null" >
+        customer_num = #{customerNum,jdbcType=VARCHAR},
+      </if>
+      <if test="invitationCode != null" >
+        invitation_code = #{invitationCode,jdbcType=VARCHAR},
+      </if>
+      <if test="customerPhone != null" >
+        customer_phone = #{customerPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="customerName != null" >
+        customer_name = #{customerName,jdbcType=VARCHAR},
+      </if>
+      <if test="customerIdNum != null" >
+        customer_id_num = #{customerIdNum,jdbcType=VARCHAR},
+      </if>
+      <if test="customerSex != null" >
+        customer_sex = #{customerSex,jdbcType=VARCHAR},
+      </if>
+      <if test="customerEthnic != null" >
+        customer_ethnic = #{customerEthnic,jdbcType=VARCHAR},
+      </if>
+      <if test="customerBirth != null" >
+        customer_birth = #{customerBirth,jdbcType=VARCHAR},
+      </if>
+      <if test="customerAdress != null" >
+        customer_adress = #{customerAdress,jdbcType=VARCHAR},
+      </if>
+      <if test="legalPersonIssAuthority != null" >
+        legal_person_iss_authority = #{legalPersonIssAuthority,jdbcType=VARCHAR},
+      </if>
+      <if test="customerVaildDate != null" >
+        customer_vaild_date = #{customerVaildDate,jdbcType=VARCHAR},
+      </if>
+      <if test="customerIdUpUrl != null" >
+        customer_id_up_url = #{customerIdUpUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="customerIdDownUrl != null" >
+        customer_id_down_url = #{customerIdDownUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="mailAccount != null" >
+        mail_account = #{mailAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="originCustomerNo != null" >
+        origin_customer_no = #{originCustomerNo,jdbcType=VARCHAR},
+      </if>
+      <if test="customerChannel != null" >
+        customer_channel = #{customerChannel,jdbcType=VARCHAR},
+      </if>
+      <if test="businessName != null" >
+        business_name = #{businessName,jdbcType=VARCHAR},
+      </if>
+      <if test="businessIdNum != null" >
+        business_id_num = #{businessIdNum,jdbcType=VARCHAR},
+      </if>
+      <if test="businessLicense != null" >
+        business_license = #{businessLicense,jdbcType=VARCHAR},
+      </if>
+      <if test="businessLicenseUrl != null" >
+        business_license_url = #{businessLicenseUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="certifiedStatus != null" >
+        certified_status = #{certifiedStatus,jdbcType=TINYINT},
+      </if>
+      <if test="accountType != null" >
+        account_type = #{accountType,jdbcType=TINYINT},
+      </if>
+      <if test="documentType != null" >
+        document_type = #{documentType,jdbcType=VARCHAR},
+      </if>
+      <if test="axqAccount != null" >
+        axq_account = #{axqAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="contractNo != null" >
+        contract_no = #{contractNo,jdbcType=VARCHAR},
+      </if>
+      <if test="customerBizId != null" >
+        customer_biz_id = #{customerBizId,jdbcType=VARCHAR},
+      </if>
+      <if test="customerBizIdJs != null" >
+        customer_biz_id_js = #{customerBizIdJs,jdbcType=VARCHAR},
+      </if>
+      <if test="protocalNo != null" >
+        protocal_no = #{protocalNo,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=BIT},
+      </if>
+      <if test="operateId != null" >
+        operate_id = #{operateId,jdbcType=BIGINT},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateBy != null" >
+        update_by = #{updateBy,jdbcType=BIGINT},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="remarks != null" >
+        remarks = #{remarks,jdbcType=VARCHAR},
+      </if>
+      <if test="isDelete != null" >
+        is_delete = #{isDelete,jdbcType=TINYINT},
+      </if>
+      <if test="redundance1 != null" >
+        redundance1 = #{redundance1,jdbcType=VARCHAR},
+      </if>
+      <if test="redundance2 != null" >
+        redundance2 = #{redundance2,jdbcType=VARCHAR},
+      </if>
+      <if test="redundance3 != null" >
+        redundance3 = #{redundance3,jdbcType=VARCHAR},
+      </if>
+      <if test="redundance4 != null" >
+        redundance4 = #{redundance4,jdbcType=VARCHAR},
+      </if>
+      <if test="redundance5 != null" >
+        redundance5 = #{redundance5,jdbcType=VARCHAR},
+      </if>
+      <if test="ipRoleId != null" >
+        ip_role_id = #{ipRoleId,jdbcType=VARCHAR},
+      </if>
+      <if test="custIpRoleId != null" >
+        cust_ip_role_id = #{custIpRoleId,jdbcType=VARCHAR},
+      </if>
+      <if test="siteUserId != null" >
+        site_user_id = #{siteUserId,jdbcType=VARCHAR},
+      </if>
+      <if test="authChannel != null" >
+        auth_channel = #{authChannel,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="twm.mybatisdemo.pojo.EtcCustomer" >
+    update etc_customer
+    set uuid = #{uuid,jdbcType=VARCHAR},
+      token = #{token,jdbcType=VARCHAR},
+      user_id = #{userId,jdbcType=VARCHAR},
+      contact_phone = #{contactPhone,jdbcType=VARCHAR},
+      master_account_no = #{masterAccountNo,jdbcType=VARCHAR},
+      customer_num = #{customerNum,jdbcType=VARCHAR},
+      invitation_code = #{invitationCode,jdbcType=VARCHAR},
+      customer_phone = #{customerPhone,jdbcType=VARCHAR},
+      customer_name = #{customerName,jdbcType=VARCHAR},
+      customer_id_num = #{customerIdNum,jdbcType=VARCHAR},
+      customer_sex = #{customerSex,jdbcType=VARCHAR},
+      customer_ethnic = #{customerEthnic,jdbcType=VARCHAR},
+      customer_birth = #{customerBirth,jdbcType=VARCHAR},
+      customer_adress = #{customerAdress,jdbcType=VARCHAR},
+      legal_person_iss_authority = #{legalPersonIssAuthority,jdbcType=VARCHAR},
+      customer_vaild_date = #{customerVaildDate,jdbcType=VARCHAR},
+      customer_id_up_url = #{customerIdUpUrl,jdbcType=VARCHAR},
+      customer_id_down_url = #{customerIdDownUrl,jdbcType=VARCHAR},
+      mail_account = #{mailAccount,jdbcType=VARCHAR},
+      origin_customer_no = #{originCustomerNo,jdbcType=VARCHAR},
+      customer_channel = #{customerChannel,jdbcType=VARCHAR},
+      business_name = #{businessName,jdbcType=VARCHAR},
+      business_id_num = #{businessIdNum,jdbcType=VARCHAR},
+      business_license = #{businessLicense,jdbcType=VARCHAR},
+      business_license_url = #{businessLicenseUrl,jdbcType=VARCHAR},
+      certified_status = #{certifiedStatus,jdbcType=TINYINT},
+      account_type = #{accountType,jdbcType=TINYINT},
+      document_type = #{documentType,jdbcType=VARCHAR},
+      axq_account = #{axqAccount,jdbcType=VARCHAR},
+      contract_no = #{contractNo,jdbcType=VARCHAR},
+      customer_biz_id = #{customerBizId,jdbcType=VARCHAR},
+      customer_biz_id_js = #{customerBizIdJs,jdbcType=VARCHAR},
+      protocal_no = #{protocalNo,jdbcType=VARCHAR},
+      status = #{status,jdbcType=BIT},
+      operate_id = #{operateId,jdbcType=BIGINT},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_by = #{updateBy,jdbcType=BIGINT},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      remarks = #{remarks,jdbcType=VARCHAR},
+      is_delete = #{isDelete,jdbcType=TINYINT},
+      redundance1 = #{redundance1,jdbcType=VARCHAR},
+      redundance2 = #{redundance2,jdbcType=VARCHAR},
+      redundance3 = #{redundance3,jdbcType=VARCHAR},
+      redundance4 = #{redundance4,jdbcType=VARCHAR},
+      redundance5 = #{redundance5,jdbcType=VARCHAR},
+      ip_role_id = #{ipRoleId,jdbcType=VARCHAR},
+      cust_ip_role_id = #{custIpRoleId,jdbcType=VARCHAR},
+      site_user_id = #{siteUserId,jdbcType=VARCHAR},
+      auth_channel = #{authChannel,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>
